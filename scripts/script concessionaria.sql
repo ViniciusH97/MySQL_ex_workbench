@@ -44,6 +44,8 @@ create table veiculo (
     foreign key(idCliente) references Cliente (idCliente),
     foreign key(idFuncionario) references funcionario(idFuncionario)
 );
+
+
     
 describe veiculo;
     
