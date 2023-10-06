@@ -11,10 +11,11 @@ create table Cozinheiro (
  
 create table Prato (
 idPrato int, 
+idCozinheiro int,
 Nome varchar(45), 
 Preco decimal(8,2), 
 primary key(idPrato), 
-foreign key (idPrato) references Cozinheiro (idCozinheiro));
+foreign key (idCozinheiro) references Cozinheiro (idCozinheiro));
 
 create table Produto (
 idProduto int,
@@ -25,6 +26,7 @@ primary key (IdProduto));
 create table Receita (
 idPrato int,
 idProduto int,
+primary key(idPrato),
 foreign key (idPrato) references Prato (idPrato),
 foreign key (idProduto) references Produto(idProduto));
 
