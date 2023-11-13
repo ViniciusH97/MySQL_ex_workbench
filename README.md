@@ -1,1 +1,1 @@
-# MySQL_exexecicios
+# MySQL_exercicios
