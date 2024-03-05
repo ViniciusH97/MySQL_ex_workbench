@@ -111,9 +111,12 @@ where unidmedida.descrunidmedida = "Litros" and unidademedida = 1 or unidademedi
 or unidademedida = 3 or unidademedida = 5 or unidmedida.descrunidmedida = "Mililitros" and
 unidademedida = 200 or unidademedida = 300 or unidademedida = 500;
 
--- 39)
+-- 39) Exiba o preço do produto mais caro e do mais barato pertencente do segmento de Limpeza?
+select max(valorunitario) from produto
+inner join segmento on produto.segmento = segmento.idsegmproduto
+where segmento.secrsegmproduto = "Limpeza";
 
-
-
-
-
+-- 40) Quantos produtos existem no segmento de Hortifruti e Carnes?
+select count(*) produto from produto
+inner join segmento on produto.segmento = segmento.idsegmproduto
+where segmento.secrgmproduto = "Hortfruti" or segmento.secrgmproduto = "Carnes";
