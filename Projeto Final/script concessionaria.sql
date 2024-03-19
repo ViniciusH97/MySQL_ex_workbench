@@ -22,8 +22,8 @@ select * from vendas;
 insert into vendas values(1, '2024-03-21', 'Venda do Carro SR Flex');
 insert into vendas values(2, '2024-03-21', 'Venda do caminhão da Volvo FH 460');
 insert into vendas values(3, '2024-03-21', 'Venda da moto Honda CBR 600RR');
-insert into vendas values(4, '2024-03-21', 'Venda do Carro XYZ');
-insert into vendas values(5, '2024-03-21', 'Venda do Caminhão ABC');
+insert into vendas values(4, '2024-03-21', 'Venda do Carro Ford Fusion');
+insert into vendas values(5, '2024-03-21', 'Venda do Moto Yamaha YZR');
 insert into vendas values(6, '2024-03-21', 'Venda da Moto DEF');
 insert into vendas values(7, '2024-03-21', 'Venda do Carro GHI');
 insert into vendas values(8, '2024-03-21', 'Venda do Caminhão JKL');
@@ -64,7 +64,6 @@ values (9, 'Rafaela Santos', '+55 35 9876-5432', 'rafaela@ehotmail.com', 9);
 
 insert into cliente (idCliente, nome, telefone, email, idvendas)
 values (10, 'Gustavo Lima', '+55 35 9876-5432', 'gustavo@gmail.com', 10);
-
 
 # Inserção dos funcionários
 
@@ -135,22 +134,37 @@ values (9, 9, 9, 'Moto', 'Kawasaki', 2021, 'Verde', 12000.00, 'Ninja 400', 5000.
 insert into veiculo (idVeiculo, idCliente, idFuncionario, tipo, fabricante, ano, cor, preco, modelo, kilometragem, disponibilidade)
 values (10, 10, 10, 'Carro', 'Hyundai', 2019, 'Prata', 45000.00, 'HB20', 70000.00, 1);
 
-# 5 Perguntas para utilização do comando inner join
+# 5 Perguntas para utilização dos comando inner join, left join e right join
 
 # 1- Quais são os nomes dos clientes e os modelos dos veículos que eles compraram?
 
-SELECT cliente.nome, veiculo.modelo
-FROM cliente
-INNER JOIN veiculo ON cliente.idCliente = veiculo.idCliente;
+select cliente.nome, veiculo.modelo
+from cliente
+inner join veiculo on cliente.idCliente = veiculo.idCliente;
 
-# 2- Para todos os veículos, quais são os modelos e os nomes dos clientes que os compraram? Se um veículo não foi comprado, ainda quero ver o modelo do veículo.
+# 2- Quais são os modelos e os nomes dos clientes que os compraram?
 
-SELECT veiculo.modelo, cliente.nome
-FROM veiculo
-LEFT JOIN cliente ON veiculo.idCliente = cliente.idCliente;
+select veiculo.modelo, cliente.nome
+from veiculo
+left join cliente on veiculo.idCliente = cliente.idCliente;
 
 # 3- Quais são os nomes dos funcionários e os nomes dos setores em que eles trabalham?
 
-# 4- Quais são os nomes dos funcionários e os nomes dos setores em que eles trabalham? Se um funcionário não trabalha em um setor, ainda quero ver o nome do funcionário.
+select funcionario.nome, setor.nome
+from funcionario
+inner join setor on funcionario.idsetor = setor.idsetor;
 
-# 5- Selecione todos os nomes dos clientes e os nomes dos funcionários que os atenderam. Se um cliente não foi atendido, ainda quero ver o nome do cliente.
+# 4- Quais são os nomes dos funcionários e os nomes dos setores em que eles trabalham? 
+
+select f.nome as 'Nome', s.nome as 'Setor'
+from funcionario f
+inner join setor s on f.idSetor = s.idSetor;
+
+# 5- Selecione todos os nomes dos clientes e os nomes dos funcionários que os atenderam.
+
+select * from funcionario;
+
+select c.nome as 'Clientes', f.nome as 'Funcionarios'
+from cliente c
+inner join funcionario f on c.idCliente = f.idFuncionario;
+
