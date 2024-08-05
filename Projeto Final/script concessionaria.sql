@@ -169,3 +169,4 @@ select c.nome as 'Clientes', f.nome as 'Funcionarios'
 from cliente c
 inner join funcionario f on c.idCliente = f.idFuncionario;
 
+-- Para o projeto final faça uma view, um procedure e um trigger. Ou dois procedure e uma trigger. Ou dois trigger e um procedure.
