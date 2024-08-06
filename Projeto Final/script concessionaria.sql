@@ -169,4 +169,19 @@ select c.nome as 'Clientes', f.nome as 'Funcionarios'
 from cliente c
 inner join funcionario f on c.idCliente = f.idFuncionario;
 
--- Para o projeto final faça uma view, um procedure e um trigger. Ou dois procedure e uma trigger. Ou dois trigger e um procedure.
+-- Dois de union, dois de agrupamentos, inner join são cinco, left e right
+-- Para o projeto final faça duas views, um procedure e um trigger.
+
+# View Quantos carros foram vendidos no mês de setembro com o vendedor Carlos souza
+create view vendas_setembro as
+select count(*) as quantidade_vendas
+from vendas
+inner join veiculo on vendas.idvendas = veiculo.idveiculo
+inner join funcionario on veiculo.idfuncionario = funcionario.idfuncionario
+where month(vendas.data_da_venda) = 9 and funcionario.nome = 'Carlos Souza';
+
+-- Utilizando a view
+
+select * from vendas_setembro;
+
+drop view vendas_setembro;
