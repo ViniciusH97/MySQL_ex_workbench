@@ -1,6 +1,9 @@
 
 use concessionaria;
 
+# criação do banco de dados
+
+
 # Inserção dos Setores
 
 select * from setor;
