@@ -170,9 +170,27 @@ select * from pedido;
 
 /* O exemplo acima foi realizado com um único pedido dentro da base de dados... Qual seria a 
 funcionalidade desta Stored Procedure se houvessem mais pedidos? 
-Resposta: Provavelmente a Stored Procedure somaria TODOS os valores contidos na tabela 
-PEDIDOITEM (select sum(Preco) into valortot from pedidoitem;
-) e atribuiria também a TODOS os pedidos contidos na tabela PEDIDO;
-Portanto,
-isso poderia ser resolvido utilizando - se de Triggers e / ou Stored Procedures ? Como ?*/
+Resposta: Provavelmente a Stored Procedure somaria TODOS os valores contidos na tabela */
 
+DELIMITER / /
+
+create PROCEDURE calcula_total_pedido (IN id_pedido INT)
+BEGIN
+    DECLARE total_pedido DECIMAL(10,2);
+    SELECT SUM(Preco) INTO total_pedido FROM pedidoitem WHERE idPedido = id_pedido;
+    UPDATE pedido SET PrecoTotal = total_pedido WHERE idPedido = id_pedido;
+END;
+
+/ /
+
+insert into pedido values (2, 1, 2, NULL);
+
+insert into pedidoitem values (2, 2, 1, NULL);
+
+insert into pedidoitem values (2, 3, 1, NULL);
+
+select * from pedido;
+
+call calcula_total_pedido (2);
+
+SELECT * FROM pedido;
