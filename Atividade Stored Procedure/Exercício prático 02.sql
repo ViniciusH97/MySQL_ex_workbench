@@ -206,3 +206,7 @@ select * from produto;
 desc pedidoitem;
 
 insert into pedidoitem values (3, 2, 2, null);
+
+select * from pedido;
+
+call calcula_total_pedido (3);
