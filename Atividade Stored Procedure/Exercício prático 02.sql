@@ -193,4 +193,16 @@ select * from pedido;
 
 call calcula_total_pedido (2);
 
+-- TESTE
+
 SELECT * FROM pedido;
+
+insert into pedido values (3, 2, 3, null);
+
+desc pedido;
+
+select * from produto;
+
+desc pedidoitem;
+
+insert into pedidoitem values (3, 2, 2, null);
