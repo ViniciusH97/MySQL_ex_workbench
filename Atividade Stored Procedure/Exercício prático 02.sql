@@ -1,5 +1,7 @@
 create database pizzaria;
 
+use pizzaria;
+
 CREATE TABLE TipoProduto (
     idTipoProduto INT(2) NOT NULL,
     DescTipo VARCHAR(40) NULL,
@@ -91,7 +93,7 @@ Select * from pizzaria;
 
 Select * from entregador;
 
-Select * from tipoprodto;
+Select * from tipoproduto;
 
 Select * from produto;
 
@@ -143,6 +145,24 @@ end;
 / /
 
 call SomaPedido (@a);
+
+show triggers;
+
+DESCRIBE Pedido;
+
+-- Inserindo pedidos
+
+insert into pedido values (1, 1, 1, NULL);
+
+-- inserindo itens do pedido
+
+insert into pedidoitem values (1, 1, 2, null);
+
+insert into pedidoitem values (1, 5, 1, null);
+
+call SomaPedido (@a);
+
+select * from pedido;
 
 -- Exercício
 
