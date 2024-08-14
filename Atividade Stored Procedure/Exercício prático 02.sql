@@ -117,7 +117,9 @@ delimiter / /
 
 create trigger CalculaPreco before
 insert
-    on PedidoItem for each row begin
+    on PedidoItem for each row 
+
+begin
 set
     new.Preco = new.Qtde * (
         select preco
@@ -173,3 +175,4 @@ PEDIDOITEM (select sum(Preco) into valortot from pedidoitem;
 ) e atribuiria também a TODOS os pedidos contidos na tabela PEDIDO;
 Portanto,
 isso poderia ser resolvido utilizando - se de Triggers e / ou Stored Procedures ? Como ?*/
+

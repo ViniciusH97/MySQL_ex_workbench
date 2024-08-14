@@ -1,4 +1,3 @@
--- Active: 1723511489130@@127.0.0.1@3306@exempgatilhoa
 CREATE database exempgatilhoa;
 USE exempgatilhoa;
 
