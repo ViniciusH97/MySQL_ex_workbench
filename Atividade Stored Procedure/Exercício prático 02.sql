@@ -103,6 +103,7 @@ pizzaria está organizando suas informações para iniciar seu funcionamento. De
 informações, os clientes ligarão solicitando os produtos para a pizzaria. Assim, será realizado o 
 cadastro dos mesmos...: 
 */
+
 Insert into cliente values (1, 1, 'Maria', 36452431);
 
 Insert into cliente values (2, 1, 'Jose', 37863422);
@@ -183,6 +184,8 @@ END;
 
 / /
 
+drop procedure calcula_total_pedido;
+-- DELETAR STORED PROCEDURE
 insert into pedido values (2, 1, 2, NULL);
 
 insert into pedidoitem values (2, 2, 1, NULL);
