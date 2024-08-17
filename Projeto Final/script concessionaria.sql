@@ -1,3 +1,4 @@
+-- Active: 1723911178167@@127.0.0.1@3306@concessionaria
 
 use concessionaria;
 
@@ -22,15 +23,15 @@ insert into setor (idsetor, nome) values (5, 'Limpeza');
 describe vendas;
 select * from vendas;
 
-insert into vendas values(1, '2024-03-21', 'Venda do Carro SR Flex');
-insert into vendas values(2, '2024-03-21', 'Venda do caminhão da Volvo FH 460');
+insert into vendas values(1, '2024-09-21', 'Venda do Carro SR Flex');
+insert into vendas values(2, '2024-09-21', 'Venda do caminhão da Volvo FH 460');
 insert into vendas values(3, '2024-03-21', 'Venda da moto Honda CBR 600RR');
 insert into vendas values(4, '2024-03-21', 'Venda do Carro Ford Fusion');
-insert into vendas values(5, '2024-03-21', 'Venda do Moto Yamaha YZR');
+insert into vendas values(5, '2024-09-21', 'Venda do Moto Yamaha YZR');
 insert into vendas values(6, '2024-03-21', 'Venda da Moto DEF');
-insert into vendas values(7, '2024-03-21', 'Venda do Carro GHI');
+insert into vendas values(7, '2024-09-21', 'Venda do Carro GHI');
 insert into vendas values(8, '2024-03-21', 'Venda do Caminhão JKL');
-insert into vendas values(9, '2024-03-21', 'Venda da Moto MNO');
+insert into vendas values(9, '2024-07-21', 'Venda da Moto MNO');
 insert into vendas values(10, '2024-03-21', 'Venda do Carro PQR');
 
 # Inserção dos Clientes
@@ -85,7 +86,7 @@ insert into funcionario (idFuncionario, idSetor, nome, funcao, data_de_nasciment
 values (4, 3, 'Paula Santos', 'Analista de RH', '1995-07-10', '+55 31 99130-7392', 4000.00);
 
 insert into funcionario (idFuncionario, idSetor, nome, funcao, data_de_nascimento, telefone, salario)
-values (5, 4, 'Marcos Silva', 'Mecanico', '1985-05-15', '+55 11 99822-3222', 1500.00);
+values (5, 1, 'Marcos Silva', 'Vendedor', '1985-05-15', '+55 11 99822-3222', 1500.00);
 
 insert into funcionario (idFuncionario, idSetor, nome, funcao, data_de_nascimento, telefone, salario)
 values (6, 5, 'Lucas Oliveira', 'Limpeza', '1990-03-20', '+55 11 99222-3333', 4000.00);
@@ -107,35 +108,37 @@ values (10, 2, 'Roberto Marques', 'Analista Financeiro', '1990-03-20', '+55 11 9
 describe veiculo;
 select * from veiculo;
 
+-- Inserção dos Veículos (Somente funcionários que são vendedores)
 insert into veiculo (idVeiculo, idCliente, idFuncionario, tipo, fabricante, ano, cor, preco, modelo, kilometragem, disponibilidade)
 values (1, 1, 1, 'Carro', 'Toyota', 2015, 'Branco', 110000.00, '2.7 SR FLEX Automático', 130000.00, 1);
 
 insert into veiculo (idVeiculo, idCliente, idFuncionario, tipo, fabricante, ano, cor, preco, modelo, kilometragem, disponibilidade)
-values (2, 2, 2, 'Caminhão', 'Volvo', 2018, 'Vermelho', 85000.00, 'FH 460', 75000.00, 1);
+values (2, 2, 1, 'Caminhão', 'Volvo', 2018, 'Vermelho', 85000.00, 'FH 460', 75000.00, 1);
 
 insert into veiculo (idVeiculo, idCliente, idFuncionario, tipo, fabricante, ano, cor, preco, modelo, kilometragem, disponibilidade)
 values (3, 3, 3, 'Moto', 'Honda', 2020, 'Preto', 8000.00, 'CBR 600RR', 12000.00, 1);
 
 insert into veiculo (idVeiculo, idCliente, idFuncionario, tipo, fabricante, ano, cor, preco, modelo, kilometragem, disponibilidade)
-values (4, 4, 4, 'Carro', 'Ford', 2017, 'Prata', 50000.00, 'Fusion', 80000.00, 1);
+values (4, 4, 3, 'Carro', 'Ford', 2017, 'Prata', 50000.00, 'Fusion', 80000.00, 1);
 
 insert into veiculo (idVeiculo, idCliente, idFuncionario, tipo, fabricante, ano, cor, preco, modelo, kilometragem, disponibilidade)
-values (5, 5, 5, 'Moto', 'Yamaha', 2019, 'Azul', 10000.00, 'YZF-R6', 15000.00, 1);
+values (5, 5, 1, 'Moto', 'Yamaha', 2019, 'Azul', 10000.00, 'YZF-R6', 15000.00, 1);
 
 insert into veiculo (idVeiculo, idCliente, idFuncionario, tipo, fabricante, ano, cor, preco, modelo, kilometragem, disponibilidade)
-values (6, 6, 6, 'Carro', 'Chevrolet', 2016, 'Preto', 40000.00, 'Cruze', 90000.00, 1);
+values (6, 6, 5, 'Carro', 'Chevrolet', 2016, 'Preto', 40000.00, 'Cruze', 90000.00, 1);
 
 insert into veiculo (idVeiculo, idCliente, idFuncionario, tipo, fabricante, ano, cor, preco, modelo, kilometragem, disponibilidade)
-values (7, 7, 7, 'Moto', 'Suzuki', 2018, 'Vermelho', 7000.00, 'GSX-R750', 18000.00, 1);
+values (7, 7, 5, 'Moto', 'Suzuki', 2018, 'Vermelho', 7000.00, 'GSX-R750', 18000.00, 1);
 
 insert into veiculo (idVeiculo, idCliente, idFuncionario, tipo, fabricante, ano, cor, preco, modelo, kilometragem, disponibilidade)
-values (8, 8, 8, 'Carro', 'Volkswagen', 2015, 'Branco', 30000.00, 'Golf', 95000.00, 1);
+values (8, 8, 3, 'Carro', 'Volkswagen', 2015, 'Branco', 30000.00, 'Golf', 95000.00, 1);
 
 insert into veiculo (idVeiculo, idCliente, idFuncionario, tipo, fabricante, ano, cor, preco, modelo, kilometragem, disponibilidade)
-values (9, 9, 9, 'Moto', 'Kawasaki', 2021, 'Verde', 12000.00, 'Ninja 400', 5000.00, 1);
+values (9, 9, 5, 'Moto', 'Kawasaki', 2021, 'Verde', 12000.00, 'Ninja 400', 5000.00, 1);
 
 insert into veiculo (idVeiculo, idCliente, idFuncionario, tipo, fabricante, ano, cor, preco, modelo, kilometragem, disponibilidade)
-values (10, 10, 10, 'Carro', 'Hyundai', 2019, 'Prata', 45000.00, 'HB20', 70000.00, 1);
+values (10, 10, 7, 'Carro', 'Hyundai', 2019, 'Prata', 45000.00, 'HB20', 70000.00, 1);
+
 
 # 5 Perguntas para utilização dos comando inner join, left join e right join
 
@@ -171,11 +174,9 @@ select c.nome as 'Clientes', f.nome as 'Funcionarios'
 from cliente c
 inner join funcionario f on c.idCliente = f.idFuncionario;
 
--- Dois de union, dois de agrupamentos, inner join são cinco, left e right
--- Para o projeto final faça duas views, um procedure e um trigger.
+-- VIEWS
 
-# View Quantos carros foram vendidos no mês de setembro com o vendedor Carlos souza
-
+-- 1) Quantos carros foram vendidos no mês de setembro com o vendedor Carlos souza
 
 create view vendas_setembro as
 select count(*) as quantidade_vendas
@@ -184,9 +185,67 @@ inner join veiculo on vendas.idvendas = veiculo.idveiculo
 inner join funcionario on veiculo.idfuncionario = funcionario.idfuncionario
 where month(vendas.data_da_venda) = 9 and funcionario.nome = 'Carlos Souza';
 
+-- 2) Mostre mostre todos os detalhes da venda desde o funcionario, veiculo e cliente.
+CREATE VIEW ver_detalhes_vendas AS
+SELECT
+    v.idVendas AS 'ID Venda',
+    c.nome AS 'Nome do Cliente',
+    c.telefone AS 'Telefone do Cliente',
+    c.email AS 'Email do Cliente',
+    ve.tipo AS 'Tipo de Veículo',
+    ve.fabricante AS 'Fabricante',
+    ve.modelo AS 'Modelo',
+    ve.ano AS 'Ano do Veículo',
+    ve.preco AS 'Preço',
+    f.nome AS 'Vendedor',
+    f.telefone AS 'Telefone do Vendedor',
+    s.nome AS 'Setor'
+FROM
+    vendas v
+    JOIN cliente c ON v.idVendas = c.idVendas
+    JOIN veiculo ve ON c.idCliente = ve.idCliente
+    JOIN funcionario f ON ve.idFuncionario = f.idFuncionario
+    JOIN setor s ON f.idSetor = s.idSetor;
 
 -- Utilizando a view
 
-#select * from vendas_setembro;
+select * from vendas_setembro;
+select * from ver_detalhes_vendas
 
-#drop view vendas_setembro;
+drop view ver_detalhes_vendas -- excluir view
+
+drop view vendas_setembro; -- excluir
+
+-- Subselect
+
+-- Encontrar o nome do funcionário que vendeu o veículo mais caro
+select nome
+from funcionario
+where
+    idFuncionario = (
+        select idFuncionario
+        from veiculo
+        order by preco desc
+        limit 1
+    );
+
+-- GROUP BY
+
+-- Agrupar o número de vendas por mês
+select month(v.data_da_venda) as mes, count(v.idvendas) as total_vendas
+from vendas v
+group by
+    month(v.data_da_venda);
+
+-- UNION 
+
+-- Unir as listas de carros e motos vendidos
+select modelo, 'Carro' as tipo
+from veiculo
+where
+    tipo = 'Carro'
+union
+select modelo, 'Moto' as tipo
+from veiculo
+where
+    tipo = 'Moto';
