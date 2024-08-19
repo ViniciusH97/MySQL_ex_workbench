@@ -1,4 +1,4 @@
--- Active: 1723911178167@@127.0.0.1@3306@concessionaria
+-- Active: 1724073004784@@127.0.0.1@3306@concessionaria
 
 use concessionaria;
 
@@ -210,7 +210,7 @@ FROM
 -- Utilizando a view
 
 select * from vendas_setembro;
-select * from ver_detalhes_vendas
+select * from ver_detalhes_vendas;
 
 drop view ver_detalhes_vendas -- excluir view
 
@@ -218,12 +218,23 @@ drop view vendas_setembro; -- excluir
 
 -- Subselect
 
--- Encontrar o nome do funcionário que vendeu o veículo mais caro
+-- 1 Encontrar o nome do funcionário que vendeu o veículo mais caro
 select nome
 from funcionario
 where
     idFuncionario = (
         select idFuncionario
+        from veiculo
+        order by preco desc
+        limit 1
+    );
+
+-- 2 encontrar qual cliente comprou o veículo mais caro
+select nome
+from cliente
+where
+    idCliente = (
+        select idCliente
         from veiculo
         order by preco desc
         limit 1
@@ -237,6 +248,14 @@ from vendas v
 group by
     month(v.data_da_venda);
 
+-- agrupar o número de vendas por vendedor
+select funcionario.nome, count(vendas.idvendas) as total_vendas
+from vendas
+inner join veiculo on vendas.idvendas = veiculo.idveiculo
+inner join funcionario on veiculo.idfuncionario = funcionario.idfuncionario
+group by
+    funcionario.nome;
+
 -- UNION 
 
 -- Unir as listas de carros e motos vendidos
@@ -249,3 +268,34 @@ select modelo, 'Moto' as tipo
 from veiculo
 where
     tipo = 'Moto';
+
+-- unir as listas de carros e motos vendidos e ordenar por modelo
+select modelo, 'Carro' as tipo
+from veiculo
+where
+    tipo = 'Carro'
+UNION
+select modelo, 'Moto' as tipo
+from veiculo
+where
+    tipo = 'Moto'
+order by modelo;
+
+-- Stored Procedures
+
+-- Crie um procedimento que armezena o montante total de vendas por mês.
+DELIMITER //
+
+create procedure total_vendas_mes()
+begin
+    select month(v.data_da_venda) as mes, count(v.idvendas) as total_vendas
+    from vendas v
+    group by
+        month(v.data_da_venda);
+end //
+
+-- Rodar o procedure
+
+call total_vendas_mes();
+
+drop procedure total_vendas_mes;
